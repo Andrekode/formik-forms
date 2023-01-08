@@ -3,10 +3,6 @@ import { Grid, TextField, Button, Box, Checkbox, FormControlLabel } from '@mui/m
 import { Formik, Field, Form } from 'formik';
 import MyCheckbox from './MyCheckbox';
 
-interface Values {
-    firstName: string;
-    lastName: string;
-}
 
 const SimpleForm: React.FC<{}> = () => {
     return (
