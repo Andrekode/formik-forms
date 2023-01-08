@@ -30,7 +30,6 @@ const Sidebar = () => {
         variant="permanent"
         anchor="left"
       >
-        <Toolbar />
         <Divider />
         <List>
           {["Simple Form", "Form", "Boilerplate Form", "Drafts"].map(
@@ -56,16 +55,6 @@ const Sidebar = () => {
               );
             }
           )}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton>
-                <ListItemText primary={text} />
-              </ListItemButton>
-            </ListItem>
-          ))}
         </List>
       </Drawer>
       <Box
