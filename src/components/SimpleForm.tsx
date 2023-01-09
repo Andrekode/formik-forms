@@ -1,15 +1,13 @@
 import React from 'react';
 import {
     Grid,
-    TextField,
     Button,
     Box,
-    Checkbox,
-    FormControlLabel,
-    FormControl,
 } from '@mui/material';
-import { Formik, Field, Form } from 'formik';
+import { Formik, Form } from 'formik';
 import simpleFormSchema from '../validationSchemas/simpleFormSchema';
+import MyTextField from './MyTextField';
+import MyCheckbox from './MyCheckbox';
 
 const SimpleForm: React.FC<{}> = () => {
     return (
@@ -23,58 +21,32 @@ const SimpleForm: React.FC<{}> = () => {
                 }}
             >
                 {(props) => {
-                    const { errors, touched, handleReset } = props;
+                    const { handleReset } = props;
                     return (
                         <Form>
                             <Grid container direction='column' spacing={2}>
                                 <Grid item>
-                                    <Field
-                                        name='firstName'
-                                        label='First name'
-                                        type='input'
-                                        error={touched.firstName && Boolean(errors.firstName)}
-                                        helperText={touched.firstName && errors.firstName}
-                                        as={TextField}
-                                    />
+                                    <MyTextField name='firstName' type='input' label='First name' />
                                 </Grid>
                                 <Grid item>
-                                    <Field
-                                        name='lastName'
-                                        label='Last name'
-                                        type='input'
-                                        error={touched.lastName && Boolean(errors.lastName)}
-                                        helperText={touched.lastName && errors.lastName}
-                                        as={TextField}
-                                    />
+                                    <MyTextField name='lastName' type='input' label='Last name' />
                                 </Grid>
                                 <Grid item>
-                                    <Field
+                                    <MyTextField
                                         name='phoneNumber'
                                         type='input'
-                                        error={touched.phoneNumber && Boolean(errors.phoneNumber)}
-                                        helperText={touched.phoneNumber && errors.phoneNumber}
-                                        as={TextField}
-                                        label='Phone Number'
+                                        label='Phone number'
                                     />
                                 </Grid>
                                 <Grid item>
-                                    <FormControlLabel
-                                        control={
-                                            <Field
-                                                name='isAvailable'
-                                                type='checkbox'
-                                                as={Checkbox}
-                                            />
-                                        }
-                                        label='I am Available'
-                                    />
+                                <MyCheckbox name='isAvailable' type="checkbox" label='Available' />
                                 </Grid>
                                 <Grid item>
                                     <Button type='submit'>Submit</Button>
                                     <Button onClick={handleReset}>Reset Form</Button>
                                 </Grid>
                             </Grid>
-                                <pre>{JSON.stringify(props, null, 2)}</pre>
+                            <pre>{JSON.stringify(props, null, 2)}</pre>
                         </Form>
                     );
                 }}
