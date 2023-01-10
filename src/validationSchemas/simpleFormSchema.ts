@@ -11,8 +11,14 @@ const simpleFormSchema = Yup.object().shape({
         .min(2, 'Last name must be at least 2 characters long')
         .max(20, "Last name can't be longer than 20 characters")
         .required('Last name is required'),
-    phoneNumber: Yup.string().required('Phone number is required'),
-    isAvailable: Yup.boolean()
+    phoneNumber: Yup.string()
+    .when('type', {
+        is: (value: string) => value === 'person2',
+        then: Yup.string().required('Phone number is required')
+    }),
+    description: Yup.string().required('Description is required'),
+    isAvailable: Yup.boolean(),
+    isOn: Yup.boolean()
 });
 
 export default simpleFormSchema;
